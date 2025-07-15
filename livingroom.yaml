@@ -1,0 +1,40 @@
+esphome:
+  name: test-cli
+
+esp32:
+  board: esp-wrover-kit
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret api_password
+  encryption:
+    key: "y8Qw1nZr2Jv5LkT9sXc4Pq6HbGfEoUaVwM3iJtYpRNs="
+
+ota:
+  - platform: esphome
+    password: "selrac"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Test Cli Fallback Hotspot"
+    password: "2SQAyLXpJcH3"
+
+captive_portal:
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: 22
+      mode:
+        input: true
+        pullup: true
+    name: "Switch Test"
