@@ -33,7 +33,7 @@ captive_portal:
 binary_sensor:
   - platform: gpio
     pin:
-      number: 22
+      number: 16
       mode:
         input: true
         pullup: true
